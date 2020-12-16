@@ -302,7 +302,7 @@ $('#btnSaveLokasi').click(function(e){
       }
     })
 
-    var data = 'lokasi=' + JSON.stringify(lok) + '&id_ukurlingkerja=' + '{{ $master->id_ukurlingkerja }}';
+    var data = 'lokasi=' + JSON.stringify(lok) + '&id_ukurlingkerja=' + '{{ $master->id_ukurlingkerja }}&_token={{ csrf_token() }}';
 
     $.ajax({
       	type : 'POST',
@@ -376,7 +376,7 @@ $('#btnSimpanTitik').click(function(event){
       }
     })
 
-    var data = 'lokasi=' + JSON.stringify(lok) + '&id_lokasi=' + '{{ $master->id_lokasi }}';
+    var data = 'lokasi=' + JSON.stringify(lok) + '&id_lokasi=' + '{{ $master->id_lokasi }}&_token={{ csrf_token() }}';
 
     $.ajax({
         type : 'POST',
@@ -554,7 +554,7 @@ $('#btnSaveDraft').click(function(){
     $.ajax({
       	type : 'POST',
       	url  : APP_URL + '/laporanpengukuran/hasil',
-        data : 'data=' + JSON.stringify(dt) + '&id_lokukurlingkerja=' + $('#id_lokukurlingkerja_dis').val(),
+        data : 'data=' + JSON.stringify(dt) + '&id_lokukurlingkerja=' + $('#id_lokukurlingkerja_dis').val() + '&_token={{ csrf_token() }}',
       	beforeSend: function() {
           $('#modal_disposisi').modal('hide');
           Metronic.blockUI({

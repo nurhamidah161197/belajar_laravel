@@ -646,7 +646,7 @@ $('#BtnSaveKesimpulan').click(function(e){
     $.ajax({
       	type : 'POST',
       	url  : APP_URL + '/kesimpulanpengukuran/kesimpulan',
-        data : dt,
+        data : dt + '&_token={{ csrf_token() }}',
       	beforeSend: function() {
           Metronic.blockUI({
       			boxed: true
@@ -692,6 +692,7 @@ $('#BtnStatus').click(function(e){
             $.ajax({
                 type : 'POST',
                 url  : APP_URL + '/kesimpulanpengukuran/status/' + '{{ $master->id_ukurlingkerja }}' + '/' + status,
+                data : '_token={{ csrf_token() }}',
                 beforeSend: function() {
                   Metronic.blockUI({
                     boxed: true
