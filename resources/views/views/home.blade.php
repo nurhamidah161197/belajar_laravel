@@ -23,7 +23,6 @@
            <table class="table table-bordered">
             <tr>
               <td align="center">
-                <img src="{{ url('k3.png') }}" width="450px">
                 <img width="450px" src="{{ URL::asset('assets/admin/layout2/img/k3.png') }}"/>
               </td>
             </tr>

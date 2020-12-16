@@ -15,8 +15,8 @@ use Illuminate\Http\Request;
 
 Route::group( ['middleware' => 'guest' ], function()
 {
-    Route::get('login', 'LoginController@getLogin')->name('login');
-    Route::post('login', 'LoginController@postLogin');
+    Route::get('login', 'Auth\LoginController@index')->name('login');
+    Route::post('login', 'Auth\LoginController@postLogin');
 });
 
 Route::group( ['middleware' => 'auth' ], function()
