@@ -44,13 +44,13 @@ class lapLingkunganKerjaController extends Controller
                                     WHERE tu.status_hapus = 1 AND tu.id_ukurlingkerja = '".$id."'");
 
         $lokasi       = Organisasi::where('status_hapus', 1)->get();
-
+        // dd($master);
 
         // DB::enableQueryLog();
 
         $lokasiukur   = DB::select("SELECT tl.*, tu.titik_ukur AS lokasi_ukur
-                                    FROM ".config('constants.tb_lokukurlingkerja')." tl
-                                    INNER JOIN ".config('constants.tb_titikukur')." tu ON tu.id_titikukur = tl.id_titikukur
+                                    FROM 1001_tb_lokukurlingkerja tl
+                                    INNER JOIN 0000_tb_titikukur tu ON tu.id_titikukur = tl.id_titikukur
                                     WHERE tl.status_hapus = 1 AND tl.id_ukurlingkerja = '".$id."'");
 
 
@@ -66,18 +66,18 @@ class lapLingkunganKerjaController extends Controller
 
 
         $nab          = DB::select("SELECT *
-                                    FROM ".config('constants.tb_nab')."
-                                    WHERE tanggal = ( SELECT MAX(tanggal) FROM ".config('constants.tb_nab')." WHERE tanggal <= '".date("Y-m-d", strtotime($master[0]->tanggal))."' AND status_hapus = 1)");
+                                    FROM 0000_tb_nab
+                                    WHERE tanggal = ( SELECT MAX(tanggal) FROM 0000_tb_nab WHERE tanggal <= '".date("Y-m-d", strtotime($master[0]->tanggal))."' AND status_hapus = 1)");
 
         // dd(DB::getQueryLog());
         // dd($nab);
         // DB::enableQueryLog();
         $data         = DB::select("SELECT th.*, tj.jenis, tj.satuan, tnn.nab
-                                    FROM ".config('constants.tb_ukurlingkerja')." tu
-                                    RIGHT JOIN ".config('constants.tb_lokukurlingkerja')." tl ON tl.id_ukurlingkerja = tu.id_ukurlingkerja
-                                    RIGHT JOIN ".config('constants.tb_hasukurlingkerja')." th ON th.id_lokukurlingkerja = tl.id_lokukurlingkerja AND th.status_hapus = 1
-                                    INNER JOIN ".config('constants.tb_jenis_ukur')." tj ON tj.id = th.id_jenis
-                                    INNER JOIN ".config('constants.tb_nilainab')." tnn ON tnn.id_jenis = th.id_jenis
+                                    FROM 1000_tb_ukurlingkerja tu
+                                    RIGHT JOIN 1001_tb_lokukurlingkerja tl ON tl.id_ukurlingkerja = tu.id_ukurlingkerja
+                                    RIGHT JOIN 1002_tb_hasilukurlingkerja th ON th.id_lokukurlingkerja = tl.id_lokukurlingkerja AND th.status_hapus = 1
+                                    INNER JOIN 0000_tb_jenisukur tj ON tj.id = th.id_jenis
+                                    INNER JOIN 0000_tb_nilainab tnn ON tnn.id_jenis = th.id_jenis
                                     WHERE tu.id_ukurlingkerja = '".$id."' AND tu.status_hapus = 1
                                     ORDER BY th.id_hasilukurlingkerja"
                                    );
@@ -136,8 +136,8 @@ class lapLingkunganKerjaController extends Controller
     {
         DB::enableQueryLog();
         $data   = DB::select("SELECT tl.*, tu.titik_ukur
-                              FROM ".config('constants.tb_lokukurlingkerja')." tl
-                              INNER JOIN ".config('constants.tb_titikukur')." tu ON tu.id_titikukur = tl.id_titikukur
+                              FROM 1001_tb_lokukurlingkerja tl
+                              INNER JOIN 0000_tb_titikukur tu ON tu.id_titikukur = tl.id_titikukur
                               WHERE tl.status_hapus = 1 AND tl.id_ukurlingkerja = '".$id."'");
 
         // dd(DB::getQueryLog());
@@ -202,8 +202,8 @@ class lapLingkunganKerjaController extends Controller
     {
         DB::enableQueryLog();
         $data = DB::select("SELECT th.*, tj.jenis, tj.satuan
-                            FROM ".config('constants.tb_hasukurlingkerja')." th
-                            INNER JOIN ".config('constants.tb_jenis_ukur')." tj ON tj.id = th.id_jenis
+                            FROM 1002_tb_hasilukurlingkerja th
+                            INNER JOIN 0000_tb_jenisukur tj ON tj.id = th.id_jenis
                             WHERE th.id_lokukurlingkerja = '".$id."' AND th.status_hapus = 1");
 
         // dd(DB::getQueryLog());

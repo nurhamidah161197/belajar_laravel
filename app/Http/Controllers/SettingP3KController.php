@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\P3K;
 use DB;
-use Datatables;
+use DataTables;
 use DateTime;
 
 class SettingP3KController extends Controller
@@ -27,11 +27,11 @@ class SettingP3KController extends Controller
                                           barang,
                                           satuan,
                                           DATE_FORMAT(updated_at,'%d/%m/%Y') AS tgl_update
-                                   FROM ".config('constants.tb_p3k')."
+                                   FROM 0000_tb_p3k
                                    WHERE status_hapus = 1
                                    ORDER BY updated_at DESC");
 
-        return Datatables::of(collect($barang))->make(true);
+        return DataTables::of(collect($barang))->make(true);
     }
 
     public function store(Request $request)

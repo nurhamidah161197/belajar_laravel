@@ -7,7 +7,7 @@ use App\User;
 use App\UsersModul;
 use App\Organisasi;
 use DB;
-use Datatables;
+use DataTables;
 
 class SettingUserController extends Controller
 {
@@ -103,7 +103,7 @@ class SettingUserController extends Controller
             break;
         }
 
-        return Datatables::of(collect($user))->make(true);
+        return DataTables::of(collect($user))->make(true);
     }
 
     public function store(Request $request)

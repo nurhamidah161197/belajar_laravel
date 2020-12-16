@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Organisasi;
 use DB;
-use Datatables;
+use DataTables;
 
 class SettingOrganisasiController extends Controller
 {
@@ -49,7 +49,7 @@ class SettingOrganisasiController extends Controller
                                ->orderBy('updated_at', 'desc')
                                ->get();
 
-        return Datatables::of($lokasi)->make(true);
+        return DataTables::of($lokasi)->make(true);
     }
 
     public function store(Request $request)

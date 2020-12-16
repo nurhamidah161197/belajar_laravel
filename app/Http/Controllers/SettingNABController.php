@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\NAB;
 use DB;
-use Datatables;
+use DataTables;
 use DateTime;
 
 class SettingNABController extends Controller
@@ -26,11 +26,11 @@ class SettingNABController extends Controller
         $nab   = DB::select("SELECT id,
                                     no_surat,
                                     DATE_FORMAT(tanggal,'%d/%m/%Y') AS tanggal
-                             FROM ".config('constants.tb_nab')."
+                             FROM 0000_tb_nab
                              WHERE status_hapus = 1
                              ORDER BY updated_at DESC");
 
-        return Datatables::of(collect($nab))->make(true);
+        return DataTables::of(collect($nab))->make(true);
     }
 
     public function store(Request $request)

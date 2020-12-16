@@ -55,24 +55,25 @@ class lapConcLingkunganKerjaController extends Controller
                                     GROUP BY tj.id
                                     ORDER BY tj.id");
         // dd(DB::getQueryLog());
+        // dd($data);
 
         // DB::enableQueryLog();
 
         $nab          = DB::select("SELECT *
-                                    FROM ".config('constants.tb_nab')."
-                                    WHERE tanggal = ( SELECT MAX(tanggal) FROM ".config('constants.tb_nab')." WHERE tanggal <= '".$master[0]->tgl."' AND status_hapus = 1)");
+                                    FROM 0000_tb_nab
+                                    WHERE tanggal = ( SELECT MAX(tanggal) FROM 0000_tb_nab WHERE tanggal <= '".$master[0]->tgl."' AND status_hapus = 1)");
         // dd(DB::getQueryLog());
 
         $hasil        = DB::select("SELECT th.*
-                                    FROM ".config('constants.tb_lokukurlingkerja')." tl
-                                    LEFT JOIN ".config('constants.tb_hasukurlingkerja')." th ON th.id_lokukurlingkerja = tl.id_lokukurlingkerja
+                                    FROM 1001_tb_lokukurlingkerja tl
+                                    LEFT JOIN 1002_tb_hasilukurlingkerja th ON th.id_lokukurlingkerja = tl.id_lokukurlingkerja
                                     WHERE tl.id_ukurlingkerja = '".$id."' AND th.status_hapus = 1");
 
         $lokasi       = Organisasi::where('status_hapus', 1)
                                   ->where('modul', 2)
                                   ->get();
 
-        $has = "";
+        $has = array();
         foreach($hasil as $hasil_){
 
             if(!isset($has[$hasil_->id_jenis])){
@@ -99,7 +100,7 @@ class lapConcLingkunganKerjaController extends Controller
         // dd(DB::getQueryLog());
 
         $user         = DB::select("SELECT *
-                                    FROM  ".config('constants.tb_user')."
+                                    FROM  users
                                     WHERE status_hapus = 1 AND level_admin IN (1,2)");
 
         return view('views.lapConcLingkunganKerja', [ 'master'      => $master[0],
@@ -128,7 +129,7 @@ class lapConcLingkunganKerjaController extends Controller
         if(!empty($request->id_keterangan)){
             $id       = $request->id_keterangan;
         }else{
-            $id       = kdauto("KET", config('constants.tb_ketlingkerja'));
+            $id       = kdauto("KET", '1003_tb_keterangan');
         }
 
         KeteranganLingkuganKerja::updateOrCreate(
@@ -154,8 +155,8 @@ class lapConcLingkunganKerjaController extends Controller
     {
         DB::enableQueryLog();
         $data = DB::select("SELECT tp.*, u.name
-                                   FROM ".config('constants.tb_petugas')." tp
-                                   INNER JOIN ".config('constants.tb_user')." u ON u.username = tp.username
+                                   FROM 1004_tb_petugas tp
+                                   INNER JOIN users u ON u.username = tp.username
                                    WHERE tp.id_ukurlingkerja = '".$id."' AND tp.status_hapus = 1");
 
         // dd(DB::getQueryLog());

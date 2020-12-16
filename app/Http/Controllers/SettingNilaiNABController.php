@@ -7,7 +7,7 @@ use App\NAB;
 use App\JenisUkur;
 use App\NilaiNAB;
 use DB;
-use Datatables;
+use DataTables;
 use DateTime;
 
 class SettingNilaiNABController extends Controller
@@ -35,7 +35,7 @@ class SettingNilaiNABController extends Controller
                            WHERE tnn.status_hapus = 1 AND tnn.id_surat = '".$id."'
                            ORDER BY tnn.updated_at DESC");
 
-        return Datatables::of(collect($nab))->make(true);
+        return DataTables::of(collect($nab))->make(true);
     }
 
     public function store(Request $request)

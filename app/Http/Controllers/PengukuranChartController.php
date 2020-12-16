@@ -26,7 +26,7 @@ class PengukuranChartController extends Controller
 
         $lok = str_replace(".", "','", $lokasi);
         $data         = DB::select("SELECT *
-                                    FROM ".config('constants.tb_organisasi')."
+                                    FROM 0000_tb_organisasi
                                     WHERE id_lokasi IN ('".$lok."')");
 
         return view('views.PengukuranChart', [ 'data'         => $data,
@@ -52,11 +52,11 @@ class PengukuranChartController extends Controller
             // print_r($lok);
             $graph = array();
             $collect = DB::select(" SELECT tu.id_lokasi, DATE_FORMAT(tu.tanggal, '%m') AS bln, DATE_FORMAT(tu.tanggal, '%M') AS bulan, tt.titik_ukur, tj.jenis, tj.satuan, th.hasil
-                                    FROM ".config('constants.tb_ukurlingkerja')." tu
-                                    LEFT JOIN ".config('constants.tb_lokukurlingkerja')." tl ON tl.id_ukurlingkerja = tu.id_ukurlingkerja AND tl.status_hapus = 1
-                                    INNER JOIN ".config('constants.tb_titikukur')." tt ON tt.id_titikukur = tl.id_titikukur
-                                    LEFT JOIN ".config('constants.tb_hasukurlingkerja')." th ON th.id_lokukurlingkerja = tl.id_lokukurlingkerja AND th.status_hapus = 1 AND th.id_jenis = '".$jenis."'
-                                    INNER JOIN ".config('constants.tb_jenis_ukur')." tj ON tj.id = th.id_jenis
+                                    FROM 1000_tb_ukurlingkerja tu
+                                    LEFT JOIN 1001_tb_lokukurlingkerja tl ON tl.id_ukurlingkerja = tu.id_ukurlingkerja AND tl.status_hapus = 1
+                                    INNER JOIN 0000_tb_titikukur tt ON tt.id_titikukur = tl.id_titikukur
+                                    LEFT JOIN 1002_tb_hasilukurlingkerja th ON th.id_lokukurlingkerja = tl.id_lokukurlingkerja AND th.status_hapus = 1 AND th.id_jenis = '".$jenis."'
+                                    INNER JOIN 0000_tb_jenisukur tj ON tj.id = th.id_jenis
                                     WHERE tu.status_hapus = 1 AND DATE_FORMAT(tu.tanggal, '%Y') = '".$year."' AND tu.id_lokasi = '".$lok[$i]."'
                                     ORDER BY bln ASC, tl.id_titikukur");
             //

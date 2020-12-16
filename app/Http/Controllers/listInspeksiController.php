@@ -8,7 +8,7 @@ use App\Organisasi;
 use App\User;
 use App\UsersModul;
 use DB;
-use Datatables;
+use DataTables;
 use DateTime;
 use Session;
 
@@ -59,7 +59,7 @@ class listInspeksiController extends Controller
 
         // dd(DB::getQueryLog());
 
-        return Datatables::of(collect($data))->make(true);
+        return DataTables::of(collect($data))->make(true);
     }
 
     public function store(Request $request)

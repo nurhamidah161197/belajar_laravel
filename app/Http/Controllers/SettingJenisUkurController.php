@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\JenisUkur;
 use DB;
-use Datatables;
+use DataTables;
 use DateTime;
 
 class SettingJenisUkurController extends Controller
@@ -23,15 +23,16 @@ class SettingJenisUkurController extends Controller
 
     public function getdata()
     {
+        // dd("handika");
         $jenis = DB::select("SELECT id,
                                     jenis,
                                     satuan,
                                     DATE_FORMAT(updated_at,'%d/%m/%Y') AS tgl_update
-                             FROM ".config('constants.tb_jenis_ukur')."
+                             FROM 0000_tb_jenisukur
                              WHERE status_hapus = 1
                              ORDER BY updated_at DESC");
 
-        return Datatables::of(collect($jenis))->make(true);
+        return DataTables::of(collect($jenis))->make(true);
     }
 
     public function store(Request $request)

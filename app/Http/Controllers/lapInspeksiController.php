@@ -43,7 +43,7 @@ class lapInspeksiController extends Controller
                            ->get();
 
         $result       =  DB::select("SELECT th.*
-                                     FROM ".config('constants.tb_hasinspeksip3k')." th
+                                     FROM 2001_tb_hasilinspeksip3k th
                                      WHERE th.id_inspeksip3k = '".$id."' AND th.status_hapus = 1");
         // dd($result);
 
@@ -62,11 +62,11 @@ class lapInspeksiController extends Controller
         DB::enableQueryLog();
 
         $old_result   = DB::select("SELECT th.*
-                                    FROM ".config('constants.tb_inspeksip3k')." ti
+                                    FROM 2000_tb_inspeksip3k ti
                                     RIGHT JOIN 2001_tb_hasilinspeksip3k th ON ti.id = th.id_inspeksip3k
                                     WHERE ti.periode = (SELECT MAX(ti2.periode)
-                                                		    FROM ".config('constants.tb_inspeksip3k')." ti2
-                                                		    INNER JOIN ".config('constants.tb_hasinspeksip3k')." th2 ON th2.id_inspeksip3k = ti2.id AND th2.status_hapus = 1
+                                                		    FROM 2000_tb_inspeksip3k ti2
+                                                		    INNER JOIN 2001_tb_hasilinspeksip3k th2 ON th2.id_inspeksip3k = ti2.id AND th2.status_hapus = 1
                                                 		    WHERE ti2.id_lokasi = '".$master[0]->id_lokasi."' AND ti2.status_hapus = 1 AND ti2.periode <= '".date('Y-m', strtotime($master[0]->periode))."')
                                     AND ti.id_lokasi = '".$master[0]->id_lokasi."' AND ti.status_hapus=1");
 

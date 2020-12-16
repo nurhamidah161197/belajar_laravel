@@ -8,7 +8,7 @@ use App\Organisasi;
 use App\User;
 use App\PetugasPLK;
 use DB;
-use Datatables;
+use DataTables;
 use DateTime;
 use Session;
 
@@ -24,7 +24,7 @@ class listLingkunganKerjaController extends Controller
                                   ->get();
 
         $user         = DB::select("SELECT *
-                                    FROM  ".config('constants.tb_user')."
+                                    FROM  users
                                     WHERE status_hapus = 1 AND level_admin IN (1,2)");
 
         return view('views.listLingkunganKerja', [ 'lokasi'        => $lokasi,
@@ -55,12 +55,12 @@ class listLingkunganKerjaController extends Controller
                                    WHEN tu.status = 3 THEN 'APPROVED BY ADMIN'
                                    WHEN tu.status = 4 THEN 'APPROVED BY USER'
                                    END) AS status
-                             FROM ".config('constants.tb_ukurlingkerja')." tu
-                             INNER JOIN ".config('constants.tb_organisasi')." tl ON tl.id_lokasi = tu.id_lokasi
-                             WHERE tu.status_hapus = 1 ".$subquery."
+                             FROM 1000_tb_ukurlingkerja tu
+                             INNER JOIN 0000_tb_organisasi tl ON tl.id_lokasi = tu.id_lokasi
+                             WHERE tu.status_hapus = 1 $subquery
                              ORDER BY tu.updated_at DESC");
 
-        return Datatables::of(collect($data))->make(true);
+        return DataTables::of(collect($data))->make(true);
     }
 
     public function store(Request $request)
