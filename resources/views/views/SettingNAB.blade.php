@@ -83,6 +83,7 @@
                   <div class="input-group input-xlarge">
                     <input name="no_surat" id="no_surat" type="text" class="form-control">
                     <input type="text" name="id_surat" id="id_surat">
+                    @csrf
                   </div>
                 </div>
               </div>

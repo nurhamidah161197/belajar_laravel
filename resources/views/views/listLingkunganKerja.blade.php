@@ -104,6 +104,7 @@
                     </span>
                   </div>
                 </div>
+                @csrf
               </div>
             </div>
             <!--/span-->

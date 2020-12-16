@@ -72,6 +72,7 @@
                     <input name="lokasi" id="lokasi" type="text" class="form-control">
                     <input type="hidden" name="id_lokasi" id="id_lokasi">
                   </div>
+                  @csrf
                 </div>
               </div>
             </div>

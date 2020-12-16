@@ -99,6 +99,7 @@
                   </div>
                 </div>
               </div>
+              @csrf
             </div>
             <!--/span-->
           </div>

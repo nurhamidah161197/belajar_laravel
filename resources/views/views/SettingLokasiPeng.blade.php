@@ -71,6 +71,7 @@
                   <div class="input-group input-xlarge">
                     <input name="lokasi" id="lokasi" type="text" class="form-control">
                     <input type="hidden" name="id_lokasi" id="id_lokasi">
+                    @csrf
                   </div>
                 </div>
               </div>

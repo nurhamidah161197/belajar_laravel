@@ -108,6 +108,7 @@
                     <tbody></tbody>
                   </table>
                 </div>
+                @csrf
               </div>
             </div>
             <!--/span-->
@@ -151,6 +152,7 @@
                   </table>
                 </div>
               </div>
+              @csrf
             </div>
             <!--/span-->
           </div>
@@ -192,6 +194,7 @@
                 <tbody></tbody>
               </table>
             </div>
+            @csrf
             <!--/span-->
           </div>
           <!--/row-->

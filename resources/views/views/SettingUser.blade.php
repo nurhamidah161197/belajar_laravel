@@ -99,6 +99,7 @@
                 <div class="col-md-8">
                   <div class="input-group input-small">
                     <input name="username" id="username" type="text" class="form-control">
+                    @csrf
                   </div>
                 </div>
               </div>

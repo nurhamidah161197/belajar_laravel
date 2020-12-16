@@ -185,6 +185,7 @@
                     <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
                     </span>
                   </div>
+                  @csrf
                 </div>
               </div>
             </div>
@@ -272,6 +273,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-md-12">
+              @csrf
               <table class="table table-bordered table-hover" id="TableEntry">
                 <thead>
                  <tr>

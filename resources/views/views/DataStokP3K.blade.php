@@ -71,6 +71,7 @@
                   <input type='hidden' name='tanggal_stok' id='tanggal_stok'>
                   <input type='hidden' name='id_barang' id='id_barang'>
                 </div>
+                @csrf
               </div>
             </div>
             <!--/span-->

@@ -69,6 +69,7 @@
                     <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
                     </span>
                   </div>
+                  @csrf
                 </div>
               </div>
             </div>

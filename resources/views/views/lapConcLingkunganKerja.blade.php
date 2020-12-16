@@ -191,6 +191,7 @@
                     <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
                     </span>
                   </div>
+                  @csrf
                 </div>
               </div>
             </div>
@@ -292,6 +293,7 @@
               <div class="col-md-9">
                 <p id="item_jenis" class="form-control"></p>
               </div>
+              @csrf
             </div>
             <!--/span-->
           </div>

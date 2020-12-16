@@ -82,6 +82,7 @@
                 <div class="col-md-8">
                   <div class="input-group input-large">
                     <input name="barang" id="barang" type="text" class="form-control">
+                    @csrf
                   </div>
                 </div>
               </div>
