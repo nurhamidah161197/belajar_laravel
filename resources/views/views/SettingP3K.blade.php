@@ -234,6 +234,7 @@
          $.ajax({
          	type : 'DELETE',
          	url  : APP_URL + '/p3k/' + id,
+          data : '_token={{ csrf_token() }}',
           beforeSend: function() {
              Metronic.blockUI({
          			boxed: true

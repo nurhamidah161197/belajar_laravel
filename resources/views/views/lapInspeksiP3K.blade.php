@@ -273,7 +273,6 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-md-12">
-              @csrf
               <table class="table table-bordered table-hover" id="TableEntry">
                 <thead>
                  <tr>
@@ -438,7 +437,7 @@ $('#btnSaveDraft').click(function(){
         type : 'POST',
         url  : "{{ url('/laporaninspeksi/hasil') }}",
         // headers : $('#api_token').val(),
-        data : 'data=' + JSON.stringify(dt) + '&id_inspeksip3k=' + $('#id_inspeksip3k').val(),
+        data : 'data=' + JSON.stringify(dt) + '&id_inspeksip3k=' + $('#id_inspeksip3k').val() + '&_token={{ csrf_token() }}',
         beforeSend: function() {
           Metronic.blockUI({
             boxed: true

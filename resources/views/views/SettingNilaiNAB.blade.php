@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-md-8" id="editModal">
                    <input type='text' class="form-control" id='desc_jenis' disabled>
-                   <input type='text' name="id_jenis" id="id_jenis">
+                   <input type='hidden' name="id_jenis" id="id_jenis">
                    @csrf
                 </div>
               </div>
@@ -261,6 +261,7 @@
              $.ajax({
              	type : 'DELETE',
              	url  : APP_URL + '/daftarnab/' + id,
+              data : '_token={{ csrf_token() }}',
               beforeSend: function() {
                  Metronic.blockUI({
              			boxed: true

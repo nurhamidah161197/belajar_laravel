@@ -104,7 +104,7 @@ class lapInspeksiController extends Controller
             if(!empty($data->id_hasilinspeksip3k)){
                 $id       = $data->id_hasilinspeksip3k;
             }else{
-                $id       = kdauto("HS", config('constants.tb_hasinspeksip3k'));
+                $id       = kdauto("HS", '2001_tb_hasilinspeksip3k');
             }
 
             HasilInspeksiP3K::updateOrCreate(

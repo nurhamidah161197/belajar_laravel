@@ -231,6 +231,7 @@
            $.ajax({
            	type : 'DELETE',
            	url  : APP_URL + '/jenispengukuran/' + id,
+            data : '_token={{ csrf_token() }}',
             beforeSend: function() {
                Metronic.blockUI({
              			boxed: true

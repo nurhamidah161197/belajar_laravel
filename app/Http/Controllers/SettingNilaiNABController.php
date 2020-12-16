@@ -29,9 +29,9 @@ class SettingNilaiNABController extends Controller
     public function getdata($id)
     {
         $nab = DB::select("SELECT tnn.*, tj.jenis, tj.satuan, tn.no_surat
-                           FROM ".config('constants.tb_nilainab')." tnn
-                           INNER JOIN ".config('constants.tb_jenis_ukur')." tj ON tj.id = tnn.id_jenis
-                           INNER JOIN ".config('constants.tb_nab')." tn ON tn.id = tnn.id_surat
+                           FROM 0000_tb_nilainab tnn
+                           INNER JOIN 0000_tb_jenisukur tj ON tj.id = tnn.id_jenis
+                           INNER JOIN 0000_tb_nab tn ON tn.id = tnn.id_surat
                            WHERE tnn.status_hapus = 1 AND tnn.id_surat = '".$id."'
                            ORDER BY tnn.updated_at DESC");
 

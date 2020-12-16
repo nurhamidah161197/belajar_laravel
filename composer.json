@@ -13,6 +13,7 @@
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "pbmedia/laravel-webdav": "^1.6",
+        "phpmailer/phpmailer": "^6.0",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
@@ -40,6 +41,9 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "app/Helpers/library.php"
         ]
     },
     "autoload-dev": {

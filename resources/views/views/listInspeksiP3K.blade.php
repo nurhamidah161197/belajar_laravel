@@ -22,7 +22,7 @@
           <a href="javascript:;">Inspeksi Isi Kotak P3K</a>
         </li>
       </ul>
-      @if(in_array(Session::get('level[1]'), [1,2]))
+      @if(in_array(Session::get('level[1]'), [1,2]) or Session::get('username') == '121509')
       <button class='btn pull-right' style='width:120px;padding-bottom:13px' id="btnRegister">Create Report&nbsp;&nbsp;<i class="m-icon-swapright m-icon-black"></i></button>
       @endif
     </div>
