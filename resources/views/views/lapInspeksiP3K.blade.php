@@ -238,14 +238,13 @@
                   <select class="form-control input-large" name="representatif" id="representatif" data-placeholder="PenanggungJawab">
                     <option></option>
                     @foreach($user as $user)
-                      <option value="{{ $user->id }}" >{{ $user->username." - ".$user->name  }}</option>
+                      <option value="{{ $user->username }}" >{{ $user->username." - ".$user->name  }}</option>
                     @endforeach
                   </select>
                   <input type="hidden" id="id_inspeksip3k" name="id_inspeksip3k" value="{{ $master->id }}">
                 </div>
               </div>
             </div>
-            <!--/span-->
           </div>
           <!--/row-->
         </div>
@@ -387,9 +386,7 @@ $('#BtnSimpanHeader').click(function(event){
 
           Metronic.unblockUI();
       		toastr["success"]("Data berhasil disimpan!.", "Notifikasi");
-      		window.setTimeout(function() {
-              window.location.reload();
-      		}, 2000);
+      		window.location.reload();
       	},
         error: function(data){
           var errors = data.responseJSON;

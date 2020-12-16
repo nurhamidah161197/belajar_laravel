@@ -33,9 +33,12 @@ class lapInspeksiController extends Controller
                                   ->where('modul', 1)
                                   ->get();
 
-        $user         = UsersModul::where('modul', 1)
-                                  ->where('status_hapus', 1)
-                                  ->get();
+        $user         = DB::select("SELECT um.*, u.name
+                                    FROM users_modul um
+                                    LEFT JOIN users u ON u.username = um.username
+                                    WHERE um.modul = 1");
+
+        // dd($user);
 
 
         $p3k          = P3K::where('status_hapus', 1)

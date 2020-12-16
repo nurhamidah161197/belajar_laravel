@@ -632,8 +632,8 @@ $('#editor_1, #editor_2, #editor_3').summernote({
 
 $('#BtnKesimpulan').click(function(){
 
-    $("#editor_1").code('{!! $master->kesimpulan !!}');
-    $("#editor_2").code('{!! $master->rekomendasi !!}');
+    $("#editor_1").code("{!! $master->kesimpulan !!}");
+    $("#editor_2").code("{!! $master->rekomendasi !!}");
     $('#modal_kesimpulan').modal('show');
 });
 
