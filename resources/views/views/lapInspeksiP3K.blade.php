@@ -481,6 +481,7 @@ $('#BtnStatus').click(function(e){
                 url  : "{{ url('/laporaninspeksi/status') }}/" + $('#id_inspeksip3k').val() + '/' + status,
                 // headers : $('#api_token').val(),
                 // data : 'data=' + JSON.stringify(dt) + '&id_inspeksip3k=' + $('#id_inspeksip3k').val(),
+                data : '_token={{ csrf_token() }}',
                 beforeSend: function() {
                   Metronic.blockUI({
                     boxed: true
