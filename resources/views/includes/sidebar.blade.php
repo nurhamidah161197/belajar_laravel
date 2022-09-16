@@ -11,13 +11,13 @@
     <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
     <ul class="page-sidebar-menu page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
       <li class="start" id="page_home">
-        <a href="{{ url('home') }}">
+        <a href="{{ url('data') }}">
         <i class="icon-home"></i>
-        <span class="title">Home</span>
+        <span class="title">Data</span>
         <span id='selpage_home'></span>
         </a>
       </li>
-      <li id="page_laporan">
+      {{-- <li id="page_laporan">
         <a href="#">
         <i class="icon-share-alt"></i>
         <span class="title">Laporan</span>
@@ -87,8 +87,8 @@
             <a href="{{ url('/useradmin') }}">Admin - User</a>
           </li>
         </ul>
-      </li>
-      @endif
+      </li> --}}
+      {{-- @endif --}}
     </ul>
     <!-- END SIDEBAR MENU -->
   </div>
